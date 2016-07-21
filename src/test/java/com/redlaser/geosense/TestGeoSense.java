@@ -46,6 +46,10 @@ public class TestGeoSense extends TestCase {
 		TimeZone tz4 = GeoSense.getTimeZone(38.7436214, -9.195223); // Lisbon, Portugal
 		assertNotNull(tz4);
 		assertEquals("Europe/Lisbon", tz4.getID());
+
+                TimeZone tz5 = GeoSense.getTimeZone(38.7436214, -9.0);
+                assertNotNull(tz5);
+                assertEquals("Europe/Lisbon", tz5.getID());
 	}
 
 	public void testGetTimeZonesByCountry() {
