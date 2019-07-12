@@ -53,7 +53,7 @@ public class GeoSense {
 			tzWorld = new TZWorld(GeoSense.class.getResource("tzworld/"), "tz_world_mp");
 			zoneTab = new ZoneTab(GeoSense.class.getResourceAsStream("zone.tab"));
 			
-			regionalZones = new HashMap<String, RegionalTZ>();
+			regionalZones = new HashMap<>();
 			regionalZones.put("US", new RegionalTZ(GeoSense.class.getResourceAsStream("tz_US.txt")));
 		}
 		catch (Exception e) {

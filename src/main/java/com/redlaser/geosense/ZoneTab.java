@@ -38,8 +38,8 @@ public class ZoneTab {
 	private Map<TimeZone, List<String>> countryByTz;
 
 	public ZoneTab(InputStream in) throws IOException {
-		tzByCountry = new HashMap<String, List<TimeZone>>();
-		countryByTz = new HashMap<TimeZone, List<String>>();
+		tzByCountry = new HashMap<>();
+		countryByTz = new HashMap<>();
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line;
@@ -55,14 +55,14 @@ public class ZoneTab {
 				
 				List<TimeZone> tzs = tzByCountry.get(country);
 				if (tzs == null) {
-					tzs = new ArrayList<TimeZone>();
+					tzs = new ArrayList<>();
 					tzByCountry.put(country, tzs);
 				}
 				tzs.add(tz);
 				
 				List<String> countries = countryByTz.get(tz);
 				if (countries == null) {
-					countries = new ArrayList<String>();
+					countries = new ArrayList<>();
 					countryByTz.put(tz, countries);
 				}
 				countries.add(country);

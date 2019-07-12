@@ -73,7 +73,7 @@ public class DbfFile {
 		// read the field definitions, starting at 32
 		buffer.position(HEADER_BYTES);
 		fillBuffer(dataStart - HEADER_BYTES);
-		List<DbfField> fields = new ArrayList<DbfField>();
+		List<DbfField> fields = new ArrayList<>();
 		while (true) {
 			// gotta do a read-ahead
 			buffer.mark();
@@ -158,7 +158,7 @@ public class DbfFile {
 		fillBuffer(recordLen);
 		int start = buffer.position();
 		
-		Map<String, Object> record = new HashMap<String, Object>();
+		Map<String, Object> record = new HashMap<>();
 		boolean deleted = buffer.get() == 0x2A;
 		if (deleted) {
 			buffer.position(start + recordLen);
