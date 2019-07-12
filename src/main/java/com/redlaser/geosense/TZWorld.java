@@ -61,7 +61,7 @@ public class TZWorld {
 		// read the shape file as a series of (multi) shapes
 		ShapeFile tzShapeFile = new ShapeFile(tzroot, mapName);
 
-		List<TZExtent> tzx = new ArrayList<TZExtent>();
+		List<TZExtent> tzx = new ArrayList<>();
 		while (true) {
 			ShapeFileShape shape = tzShapeFile.readShape();
 			if (shape == null)
@@ -81,7 +81,7 @@ public class TZWorld {
 		// build an index by whole-degree tiles. the trick is, build the index
 		// on the bounds of the contained individual polygons rather than the
 		// whole thing, so we can gracefully deal with disjoint zones (e.g. GMT)
-		Map<Integer, List<Integer>> idxmap = new HashMap<Integer, List<Integer>>();
+		Map<Integer, List<Integer>> idxmap = new HashMap<>();
 		for (int i = 0; i < tzExtents.length; i++) {
 			TZExtent t = tzExtents[i];
 			for (Polygon path : t.includes) {
@@ -110,7 +110,7 @@ public class TZWorld {
 					index[tile] = new int[tzs.size()];
 					int l = index[tile].length;
 					for (int t = 0; t < l; t++)
-						index[tile][t] = tzs.get(t);
+						index[tile][t] = tzs.get(t).intValue();
 
 					sizes[l < 10 ? l : 10]++;
 				}
@@ -137,7 +137,7 @@ public class TZWorld {
 		maxLat = (int) Math.ceil((double)maxLat / SCALE_FACTOR);
 		maxLon = (int) Math.ceil((double)maxLon / SCALE_FACTOR);
 
-		List<Integer> indices = new ArrayList<Integer>();
+		List<Integer> indices = new ArrayList<>();
 		for (int lat = minLat; lat <= maxLat; lat++)
 			for (int lon = minLon; lon <= maxLon; lon++)
 				indices.add(getIndex(lat, lon));
@@ -191,8 +191,8 @@ public class TZWorld {
 			int h = integerize(bbox2D.getMaxY()) - y;
 			bbox = new Rectangle(x, y, w, h);
 
-			List<Polygon> includes = new ArrayList<Polygon>();
-			List<Polygon> excludes = new ArrayList<Polygon>();
+			List<Polygon> includes = new ArrayList<>();
+			List<Polygon> excludes = new ArrayList<>();
 			for (Point2D[] part : shape.getShapeData()) {
 				int[] xs = new int[part.length];
 				int[] ys = new int[part.length];

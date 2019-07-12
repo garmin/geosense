@@ -31,8 +31,8 @@ import java.util.Map;
  * @author Frank D. Russo
  */
 public class Locales {
-	private static Map<String, Locale> locales = new HashMap<String, Locale>();
-	private static Map<String, List<Locale>> localeByCountry = new HashMap<String, List<Locale>>();
+	private static Map<String, Locale> locales = new HashMap<>();
+	private static Map<String, List<Locale>> localeByCountry = new HashMap<>();
 
 	private static synchronized Locale register(Locale locale) {
 		// keep a single instance per standardized name
@@ -46,7 +46,7 @@ public class Locales {
 		if (country != null) {
 			List<Locale> locales = localeByCountry.get(country);
 			if (locales == null) {
-				locales = new ArrayList<Locale>();
+				locales = new ArrayList<>();
 				localeByCountry.put(country, locales);
 			}
 			if (!locales.contains(locale))

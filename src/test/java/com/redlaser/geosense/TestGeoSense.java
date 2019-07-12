@@ -16,20 +16,26 @@
  */
 package com.redlaser.geosense;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.List;
 import java.util.TimeZone;
 
-import junit.framework.TestCase;
+import org.junit.jupiter.api.Test;
 
 /**
  * @author Frank D Russo
  */
-public class TestGeoSense extends TestCase {
+@SuppressWarnings("static-method")
+public class TestGeoSense {
 	static {
 		// force initialization once
 		GeoSense.init();
 	}
-	
+
+	@Test
 	public void testGetTimeZone() {
 		TimeZone tz1 = GeoSense.getTimeZone(37.29390,-121.91413);
 		assertNotNull(tz1);
@@ -52,6 +58,7 @@ public class TestGeoSense extends TestCase {
                 assertEquals("Europe/Lisbon", tz5.getID());
 	}
 
+	@Test
 	public void testGetTimeZonesByCountry() {
 		List<TimeZone> usTZs = GeoSense.getTimeZones("US");
 		assertTrue(usTZs.contains(TimeZone.getTimeZone("America/New_York")));
@@ -65,6 +72,7 @@ public class TestGeoSense extends TestCase {
 		assertEquals("Europe/Berlin", deTZ.getID());
 	}
 
+	@Test
 	public void testGetACountryByTimezone() {
 		String country = GeoSense.getACountry(TimeZone.getTimeZone("Asia/Shanghai"));
 		assertEquals("CN", country);

@@ -39,8 +39,8 @@ public class RegionalTZ {
 	private Map<TimeZone, List<String>> regionByTz;
 
 	public RegionalTZ(InputStream in) throws IOException {
-		tzByRegion = new HashMap<String, List<TimeZone>>();
-		regionByTz = new HashMap<TimeZone, List<String>>();
+		tzByRegion = new HashMap<>();
+		regionByTz = new HashMap<>();
 		
 		BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 		String line;
@@ -56,14 +56,14 @@ public class RegionalTZ {
 				
 				List<TimeZone> tzs = tzByRegion.get(region);
 				if (tzs == null) {
-					tzs = new ArrayList<TimeZone>();
+					tzs = new ArrayList<>();
 					tzByRegion.put(region, tzs);
 				}
 				tzs.add(tz);
 				
 				List<String> regions = regionByTz.get(tz);
 				if (regions == null) {
-					regions = new ArrayList<String>();
+					regions = new ArrayList<>();
 					regionByTz.put(tz, regions);
 				}
 				regions.add(region);

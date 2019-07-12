@@ -11,8 +11,9 @@ public class Polygon extends java.awt.Polygon {
      * {@inheritDoc}
      * @since 1.2
      */
+    @Override
     public boolean contains(double x, double y) {
-        if (npoints <= 2 || !getBoundingBox().contains(x, y)) {
+        if (npoints <= 2 || !getBounds().contains(x, y)) {
             return false;
         }
         int hits = 0;
