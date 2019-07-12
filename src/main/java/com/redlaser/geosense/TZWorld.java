@@ -16,7 +16,6 @@
  */
 package com.redlaser.geosense;
 
-import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
